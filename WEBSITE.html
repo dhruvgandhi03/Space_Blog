@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@500&display=swap" rel="stylesheet">
+    <script src="WEB.js"></script>
+    <script src="https://cdn.lordicon.com/ritcuqlt.js"></script>
+
+
+
+    <script src="https://kit.fontawesome.com/9d84739ab1.js" crossorigin="anonymous"></script>
+
+
+
+    <style>
+        * {
+            box-sizing: border-box;
+
+        }
+
+        body {
+            background-color: #191235;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            margin: 0px;
+            overflow: hidden;
+
+
+        }
+
+        nav {
+            display: flex;
+            width: 100%;
+            border-bottom: 1px solid rgb(255, 255, 255, 0.1);
+            z-index: 5;
+        }
+
+        nav .navbar {
+            padding: 3rem 2rem;
+            display: flex;
+            gap: 1rem;
+            border-left: 1px solid rgb(255, 255, 255, 0.1);
+            justify-content: center;
+            align-items: center;
+        }
+
+        #logo,
+        #menu {
+            flex-basis: calc(100%/3);
+            gap: 6rem;
+
+        }
+
+        #logo {
+            height: 6vh;
+            position: relative;
+            top: 10px;
+        }
+
+
+        #btn:hover,
+        nav a:hover {
+            color: rgb(126, 87, 194);
+
+
+        }
+
+        #btn:hover {
+            background-color: #7657f320;
+        }
+
+        #socials,
+        #contact {
+            flex-grow: 1;
+
+        }
+
+        a {
+            font-weight: 10;
+            font-family: 'Rubik', sans-serif;
+            color: white;
+            text-decoration: none;
+
+
+        }
+
+        div,
+        p {
+
+            font-weight: 1000;
+            font-family: 'Rubik', sans-serif;
+            color: white;
+            text-decoration: none;
+
+
+        }
+
+        main {
+            flex-grow: 1;
+            position: relative;
+
+
+
+
+        }
+
+        main article {
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            z-index: 5;
+
+            display: grid;
+            height: 100%;
+            grid-template-columns: 2fr 1fr;
+            grid-template-rows: 2fr 1fr;
+            transition: transform 400ms ease;
+
+        }
+
+        main article .article-section {
+            height: 100%;
+            display: flex;
+
+        }
+
+        main article .article-description-section,
+        main article .article-nav-section {
+            border-left: 1px solid rgb(255, 255, 255, 0.1);
+
+        }
+
+        main article .article-title-section,
+        main article .article-nav-section {
+            border-top: 1px solid rgb(255, 255, 255, 0.1);
+
+        }
+
+        main article:first-child .article-image-section {
+
+            background-image: url(https://wallpaperaccess.com/full/511637.jpg);
+            background-size: 80%;
+            background-position-x: 6rem;
+            background-position-y: -2rem;
+
+
+
+        }
+
+        main article:nth-child(2) .article-image-section {
+            background-image: url(https://wallpaperaccess.com/full/250545.jpg);
+            background-size: 100%;
+            background-position-y: -6rem;
+
+
+
+        }
+
+        main article:nth-child(3) .article-image-section {
+            background-image: url(https://wallpaperaccess.com/full/891216.jpg);
+            background-position-y: -5rem;
+            background-position-x: -0rem;
+            background-size: 100%;
+        }
+
+        main article:nth-child(4) .article-image-section {
+            background-image: url(https://wallpaperaccess.com/full/52306.jpg);
+            background-position-y: -10rem;
+            background-position-x: -0rem;
+            background-size: 100%;
+
+
+        }
+
+        main article .article-nav-section {
+            display: grid;
+            height: 100%;
+            grid-template-columns: 1fr 1fr;
+
+
+        }
+
+        #btn {
+            background-color: #191235;
+            border: 1px solid rgb(255, 255, 255, 0.1);
+            font-size: 50px;
+
+            color: aliceblue;
+
+        }
+
+        main article .article-description-section {
+            display: flex;
+            flex-direction: column;
+            padding: 4rem;
+            justify-content: flex-end;
+
+
+        }
+
+        #socials {
+            display: flex;
+            justify-content: space-evenly;
+            font-size: large;
+
+        }
+
+        main article .article-title-section p {
+            font-size: 55px;
+            padding: 25px;
+            padding-left: 5px;
+            text-transform: uppercase;
+            margin: 0px;
+        }
+
+        #logo {
+            font-size: 40px;
+            display: flex;
+
+        }
+
+        #logo i:hover {
+            color: rgb(209, 10, 36);
+        }
+
+
+
+        main>article[data-status="inactive"] {
+            transform: translateX(-100%);
+            transition: none;
+        }
+
+        main>article[data-status="active"] {
+            transform: translateX(0%);
+        }
+
+        main>article[data-status="before"] {
+            transform: translateX(-100%);
+        }
+
+        main>article[data-status="after"] {
+            transform: translateX(100%);
+        }
+
+        main>article[data-status="becoming-active-from-before"] {
+            transform: translateX(-100%);
+            transition: none;
+        }
+
+        main>article[data-status="becoming-active-from-after"] {
+            transform: translateX(100%);
+            transition: none;
+        }
+
+        .article-description-section p {
+            font-weight: 100;
+            font-size: 20px;
+        }
+
+        .container {
+            background-color: #191235;
+            transition: transform 400ms ease;
+            display: grid;
+            width: 100%;
+            height: 100%;
+            /* position: absolute;   */
+
+        }
+
+        main>.container[data-status="up-to-down"] {
+            transform: translateY(100%);
+
+        }
+
+        main>article[data-status="down"] {
+            transform: translateX(-100%);
+
+        }
+
+        .blob {
+            background: linear-gradient(rgb(239, 237, 166), rgb(234, 240, 50));
+
+            border-radius: 50%;
+
+            height: 8vh;
+            aspect-ratio: 1;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            translate: -50% -50%;
+            animation: rotate 20s infinite;
+            z-index: 2;
+
+            filter: blur(5px);
+            opacity: 0.4;
+
+
+
+        }
+
+        .moon {
+
+            translate: -50% -50%;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            animation: rotate 7s infinite linear;
+
+            z-index: 4;
+
+            opacity: 1;
+
+        }
+
+        #menu:hover~.blob {
+            transform: translate(-50%, -50%) scale(1.5);
+
+        }
+
+
+
+
+
+
+
+
+
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+
+            }
+
+            to {
+                transform: rotate(360deg);
+
+            }
+
+        }
+
+        @keyframes scale {
+            from {
+                transform: scale(1)
+            }
+
+            to {
+                transform: scale(3);
+
+            }
+
+        }
+    </style>
+
+</head>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<body>
+    <div class="blob">
+
+
+    </div>
+    <div class="moon">
+        <img class="moon" id="img5" src="moon.png" alt="" height="50px" width="50px">
+    </div>
+    <nav>
+        <div id="logo" class="navbar">
+            <lord-icon src="https://cdn.lordicon.com/vkweisbr.json" trigger="hover"
+                colors="outline:#7e57c2,primary:#646e78,secondary:#2ca58d,tertiary:#4bb3fd" stroke="30"
+                style="width:100px;height:100px">
+            </lord-icon>
+            <!-- <i class="fa-solid fa-heart"></i> -->
+        </div>
+        <div id="menu" class="navbar"><a href="" id="about" onclick="aboutlink()">ABOUT</a><a href="" id="work"
+                onclick="worklink()">WORK</a></div>
+        <div id="socials" class="navbar">
+            <a href="https://www.instagram.com/_dhruv__03/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+            <a href=""><i class="fa-brands fa-facebook"></i></a>
+            <a href="https://twitter.com/dhruv_who" target="_blank"><i class="fa-brands fa-twitter"></i> </a>
+        </div>
+        <div id="contact" class="navbar"><a href="">WANNA TALK?</a></div>
+
+
+    </nav>
+    <main>
+
+        <article data-index="0" data-status="active" class="pages">
+            <div class="article-image-section article-section">
+
+            </div>
+            <div class="article-description-section article-section">
+
+                <p>Around 13.7 billion years ago, everything in the entire universe was condensed in an infinitesimally
+                    small singularity, a point of infinite denseness and heat. Suddenly, an explosive expansion began,
+                    ballooning our universe outwards faster than the speed of light.
+
+                </p>
+
+            </div>
+            <div class="article-title-section article-section">
+
+                <p> BIGBANG : <br>WHRER IT ALL STARTED.</p>
+
+            </div>
+            <div class="article-nav-section article-section">
+                <button id="btn" onclick="handleleft()">&#8592;</button>
+                <button id="btn" onclick="handleright()">&#8594;</button>
+            </div>
+        </article>
+
+        <article data-index="1" data-status="inactive" class="pages">
+            <div class="article-image-section article-section">
+
+            </div>
+            <div class="article-description-section article-section">
+
+                <p>A BOOK CAN BE YOUR BEST TEACHER
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident quasi assumenda reiciendis
+                    veritatis amet. Error dolor nesciunt beatae numquam tenetur nulla laboriosam vero sit pariatur
+                    illum! Ut eos perspiciatis obcaecati?
+
+                </p>
+
+            </div>
+            <div class="article-title-section article-section">
+                <p>
+                    galaxies : <br> too much for even imagine.
+                </p>
+            </div>
+            <div class="article-nav-section article-section">
+                <button id="btn" onclick="handleleft()">&#8592;</button>
+                <button id="btn" onclick="handleright()">&#8594;</button>
+            </div>
+        </article>
+        <article data-index="2" data-status="inactive" class="pages">
+            <div class="article-image-section article-section">
+
+            </div>
+            <div class="article-description-section article-section">
+
+                <p>A BOOK CAN BE YOUR BEST TEACHER
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident quasi assumenda reiciendis
+                    veritatis amet. Error dolor nesciunt beatae numquam tenetur nulla laboriosam vero sit pariatur
+                    illum! Ut eos perspiciatis obcaecati?
+
+                </p>
+
+            </div>
+            <div class="article-title-section article-section">
+                <p>blackhole : <br> the destroyer.</p>
+            </div>
+            <div class="article-nav-section article-section">
+                <button id="btn" onclick="handleleft()">&#8592;</button>
+                <button id="btn" onclick="handleright()">&#8594;</button>
+            </div>
+        </article>
+        <article data-index="3" data-status="inactive" class="pages">
+            <div class="article-image-section article-section">
+
+            </div>
+            <div class="article-description-section article-section">
+
+                <p>A BOOK CAN BE YOUR BEST TEACHER
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident quasi assumenda reiciendis
+                    veritatis amet. Error dolor nesciunt beatae numquam tenetur nulla laboriosam vero sit pariatur
+                    illum! Ut eos perspiciatis obcaecati?
+
+                </p>
+
+            </div>
+            <div class="article-title-section article-section">
+                <p>
+                    earth : <br>
+                    a place where the life belongs.
+                </p>
+            </div>
+            <div class="article-nav-section article-section">
+                <button id="btn" onclick="handleleft()">&#8592;</button>
+                <button id="btn" onclick="handleright()">&#8594;</button>
+            </div>
+        </article>
+
+
+
+
+
+
+        <div class="container" data-index="6" data-status="off">
+
+
+        </div>
+
+
+
+
+
+    </main>
+
+    <script>
+
+        const BLOB = document.querySelector(".blob");
+        const MOON = document.querySelector(".moon");
+
+
+        window.addEventListener("mousemove", function (e) {
+
+
+
+            BLOB.animate({
+
+                top: `${e.clientY}px`,
+                left: `${e.clientX}px`
+
+            }, { duration: 500, fill: "forwards" })
+            MOON.animate({
+
+                top: `${e.clientY}px`,
+                left: `${e.clientX}px`
+
+            }, { duration: 500, fill: "forwards" })
+
+
+
+        });
+    </script>
+
+
+</body>
+
+</html>
