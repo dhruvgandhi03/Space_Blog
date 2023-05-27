@@ -73,9 +73,6 @@ document.body.onpointermove = event => {
 
 }
 
-const New = () =>{
-   console("this is new")
-}
 
 
 
